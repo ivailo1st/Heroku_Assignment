@@ -18,7 +18,7 @@ function createServer() {
   const questionSchema = new mongoose.Schema({
     id: Number,
     question: String,
-    answer: String,
+    answer: Array,
     upvotes: Number
   });
 
@@ -65,7 +65,7 @@ function createServer() {
 
   app.post("/api/Question/Answer", async (req, res) => {
     let answerQuestion = await questionModel.findOne({ id: req.body.id });
-    answerQuestion.answer = req.body.answer;
+    answerQuestion.answer.push(" " + req.body.answer + ";");
     await answerQuestion.save();
 
     res.json({ "Response": "Answer Added" });

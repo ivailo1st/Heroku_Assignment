@@ -114,7 +114,7 @@ function App() {
     const newQuestion = {
       id: questions[questions.length - 1].id + 1,
       question: question,
-      answer: "",
+      answer: [""],
       upvotes: 0
     };
     createNewQuestions(newQuestion);
